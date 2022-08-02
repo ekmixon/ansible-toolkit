@@ -73,9 +73,7 @@ def mkdir_p(path):
     try:
         os.makedirs(path)
     except OSError as exc:  # Python >2.5
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
-            pass
-        else:
+        if exc.errno != errno.EEXIST or not os.path.isdir(path):
             raise
 
 
@@ -105,9 +103,8 @@ def get_files(path):
     for root, dirs, files in os.walk(path):
 
         # Skip hidden files
-        files = [f for f in files if not f[0] == '.']
-        dirs[:] = [d for d in dirs if not d[0] == '.']
+        files = [f for f in files if f[0] != '.']
+        dirs[:] = [d for d in dirs if d[0] != '.']
 
-        for filename in files:
-            return_files.append(os.path.join(root, filename))
+        return_files.extend(os.path.join(root, filename) for filename in files)
     return return_files

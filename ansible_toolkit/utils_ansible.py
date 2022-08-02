@@ -52,7 +52,7 @@ def gather_facts(host, inventory=None, user=None):
         # ... notify the user of failures
         for host, result in results.iteritems():
             if result.get('unreachable') or result.get('failures'):
-                yellow('Unable to gather facts for host "{}"'.format(host))
+                yellow(f'Unable to gather facts for host "{host}"')
 
     finally:
         playbook_file.close()

@@ -71,11 +71,7 @@ def restore(path, password_file=None):
         new_hash = hashlib.sha1(new_data).hexdigest()
 
     # Determine whether to re-encrypt
-    if old_hash != new_hash:
-        new_data = vault.encrypt(new_data)
-    else:
-        new_data = old_data
-
+    new_data = vault.encrypt(new_data) if old_hash != new_hash else old_data
     # Update file
     with open(path, 'wb') as f:
         f.write(new_data)

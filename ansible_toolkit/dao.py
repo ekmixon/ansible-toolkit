@@ -17,7 +17,7 @@ class AnsibleDao(object):
         """
         raise NotImplementedError
 
-    def read_vault_file(vault_password_file):
+    def read_vault_file(self):
         """
         Read a vault password from a file or if executable,
         execute the script and
@@ -74,6 +74,4 @@ def create_dao():
     :return: Ansible data access object.
     """
 
-    if ansible.__version__.startswith('2'):
-        return Ansible2()
-    return Ansible1()
+    return Ansible2() if ansible.__version__.startswith('2') else Ansible1()

@@ -11,8 +11,8 @@ def show_diff(old, new):
         if k in old.keys() and v == old[k]:
             continue
         if k in old.keys() and v != old[k]:
-            red(" - ['{}'] = {}".format(k, old[k]))
-        green(" + ['{}'] = {}".format(k, v))
+            red(f" - ['{k}'] = {old[k]}")
+        green(f" + ['{k}'] = {v}")
 
 
 def get_inject_vars(self, host):

@@ -47,8 +47,9 @@ def get_old_filename(diff_part):
         match = r.search(diff_part)
         if match is not None:
             return match.groups()[0]
-    raise MalformedGitDiff("No old filename in diff part found.  "
-                           "Examined diff part: {}".format(diff_part))
+    raise MalformedGitDiff(
+        f"No old filename in diff part found.  Examined diff part: {diff_part}"
+    )
 
 
 def get_old_contents(sha, filename):
@@ -70,8 +71,9 @@ def get_new_filename(diff_part):
         match = r.search(diff_part)
         if match is not None:
             return match.groups()[0]
-    raise MalformedGitDiff("No new filename in diff part found.  "
-                           "Examined diff part: {}".format(diff_part))
+    raise MalformedGitDiff(
+        f"No new filename in diff part found.  Examined diff part: {diff_part}"
+    )
 
 
 def get_new_contents(filename):

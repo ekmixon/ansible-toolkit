@@ -41,11 +41,8 @@ index c09080b..0d803bb 100644
 +++ b/group_vars/foo
 """
 
-SAMPLE_DIFF = DIFF_HEAD_1
-
-SAMPLE_DIFF += """@@ -1,32 +1,33 @@
+SAMPLE_DIFF = DIFF_HEAD_1 + """@@ -1,32 +1,33 @@
 ANSIBLE_VAULT;1.1;AES256"""
-
 SAMPLE_DIFF += ''.join('\n-' + i for i in OLD_FILE_1.split('\n')[1:])
 SAMPLE_DIFF += ''.join('\n+' + i for i in NEW_FILE_1.split('\n')[1:])
 
